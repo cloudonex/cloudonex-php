@@ -89,8 +89,9 @@ class CloudOnex {
         }
         elseif(strtoupper($method) != 'GET'){
             $curlopt[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-            $curlopt[CURLOPT_POSTFIELDS] = $parameters;
+            curl_setopt($client->handle, CURLOPT_POSTFIELDS, http_build_query($parameters));
         }
+
 
         if($client->options['base_url']){
             if($client->url[0] != '/' && substr($client->options['base_url'], -1) != '/')

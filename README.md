@@ -5,7 +5,7 @@ Go to Settings → API & generate an API key
 
 ```
 $api = new CloudOnex([
-     'base_url' => "http://stackb.test/?ng=api/v2/",
+     'base_url' => "https://demo.cloudonex.com/api/v2/",
      'key' => '4fy5ays2yuplj8c1g0bja033uueu8q3e4rsm3g4y'
  ]);
  ```
@@ -213,3 +213,11 @@ days60 : + 50 days
 **Get an invoice by id**
 
 `$response = $api->get("invoice/1")->response();`
+
+**Update an invoice by id**
+
+```
+$response = $api->put("invoice/1",[
+       'status' => 'Paid'
+   ])->response();
+   ```
