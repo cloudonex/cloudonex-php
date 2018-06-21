@@ -1,7 +1,6 @@
 <?php
 require '../CloudOnex.php';
 require 'init.php';
-require 'header.php';
 
 // Get All Customers
 
@@ -9,12 +8,14 @@ $response = $api->get("customers")->response();
 
 $customers = json_decode($response);
 
+
 ?>
+
 
 <h4>Customers</h4>
 
 <p>Get All Customers</p>
-    <pre><code class="language-php">$api->get("customers")->response();</code></pre>
+    <pre><code>$api->get("customers")->response();</code></pre>
 
 <hr>
 
@@ -46,6 +47,4 @@ $customers = json_decode($response);
         </tbody>
     </table>
 
-<?php
 
-require 'footer.php';

@@ -6,7 +6,7 @@ $api = new CloudOnex([
 ]);
 
 
-// For Demo Only
+// For Demo Purpose Only
 function jsonPrettyPrint( $json )
 {
     $result = '';

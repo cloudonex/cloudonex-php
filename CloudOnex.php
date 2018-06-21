@@ -64,9 +64,7 @@ class CloudOnex {
             CURLOPT_RETURNTRANSFER => TRUE,
             CURLOPT_USERAGENT => 'CloudOnex API Library 1.0.1',
             CURLOPT_HTTPHEADER => [
-                'Content-Type: application/json',
                 'Authorization: Bearer '.$client->options['api_key']
-
             ]
         ];
 
@@ -75,23 +73,23 @@ class CloudOnex {
 
 
 
-        if(is_array($parameters)){
-            $parameters_string = http_build_query($parameters);
-        }
-        else
-            $parameters_string = (string) $parameters;
+//        if(is_array($parameters)){
+//            $parameters_string = http_build_query($parameters);
+//            exit($parameters_string);
+//        }
+//        else
+//            $parameters_string = (string) $parameters;
+
 
         if(strtoupper($method) == 'POST'){
             $curlopt[CURLOPT_POST] = TRUE;
-            $curlopt[CURLOPT_POSTFIELDS] = $parameters_string;
+          //  $curlopt[CURLOPT_POSTFIELDS] = $parameters;
+
+            curl_setopt($client->handle, CURLOPT_POSTFIELDS, http_build_query($parameters));
         }
         elseif(strtoupper($method) != 'GET'){
             $curlopt[CURLOPT_CUSTOMREQUEST] = strtoupper($method);
-            $curlopt[CURLOPT_POSTFIELDS] = $parameters_string;
-        }
-        elseif($parameters_string){
-            $client->url .= strpos($client->url, '?')? '&' : '?';
-            $client->url .= $parameters_string;
+            $curlopt[CURLOPT_POSTFIELDS] = $parameters;
         }
 
         if($client->options['base_url']){

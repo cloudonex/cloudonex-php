@@ -1,11 +1,10 @@
 <?php
 require '../CloudOnex.php';
 require 'init.php';
-require 'header.php';
 
 
 // Get Single customer by id
-$response = $api->get("customer/294")->response();
+$response = $api->get("customer/1")->response();
 
 $customer = json_decode($response);
 
@@ -14,11 +13,11 @@ $customer = json_decode($response);
     <h4>Customer</h4>
 
     <p>Get a customer by id</p>
-    <pre><code class="language-php">$api->get("customer/1")->response();</code></pre>
+    <pre><code>$api->get("customer/1")->response();</code></pre>
 
     <hr>
 
-    <pre><code class="language-json"><?php echo jsonPrettyPrint($response); ?></code></pre>
+    <pre><code><?php echo jsonPrettyPrint($response); ?></code></pre>
 
 <?php
 
@@ -32,8 +31,3 @@ echo 'State: '.$customer->state.'<br>';
 echo 'ZIP: '.$customer->zip.'<br>';
 echo '<hr>';
 
-?>
-
-<?php
-
-require 'footer.php';
